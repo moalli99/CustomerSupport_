@@ -1,5 +1,33 @@
+
 [project]
-name = "customersupport"
+name = "customer-support-ai"
 version = "0.1.0"
-requires-python = ">=3.11"
-dependencies = []
+description = "An AI-powered multi-agent customer support system"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi>=0.162.0",
+    "langchain>=1.4.7",
+    "langchain-openai>=1.7.3",
+    "pydantic-settings>=2.16.2",
+    "supabase>=2.33.0",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+pythonpath = ["."]
+addopts = "-ra"
